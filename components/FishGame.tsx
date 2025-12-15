@@ -353,7 +353,7 @@ const FishGame: React.FC<FishGameProps> = ({ balance, setBalance, onGameEvent, g
             </div>
         </div>
         <div className="text-white/50 text-xs arcade-font">
-            FIRE KIRIN SIMULATOR V1.0
+            GAME VAULT 777 V1.0
         </div>
       </div>
 

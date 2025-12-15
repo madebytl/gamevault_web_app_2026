@@ -26,8 +26,10 @@ const App = () => {
 
   const handleLogin = (user: string) => {
       setUsername(user);
+      // Save username to localStorage for winning feature
+      localStorage.setItem('gamevault_username', user);
       setMessages([
-        { role: 'model', text: `Welcome to FIRE KIRIN SIMULATOR, ${user}! I'm the Boss here. Need chips? Just ask!` }
+        { role: 'model', text: `Welcome to GAME VAULT 777, ${user}! I'm the Boss here. Need chips? Just ask!` }
       ]);
       setHasEntered(true);
       // Trigger locker check again on entry
@@ -81,7 +83,7 @@ const App = () => {
           <div className="flex items-center gap-2">
             <span className="text-2xl animate-pulse">🔥</span>
             <h1 className="text-2xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-kirin-gold to-kirin-red arcade-font">
-              FIRE KIRIN
+              GAME VAULT 777
             </h1>
           </div>
           <div className="flex items-center gap-4">

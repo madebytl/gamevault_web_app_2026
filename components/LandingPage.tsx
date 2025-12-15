@@ -8,19 +8,27 @@ interface LandingPageProps {
 type AuthMode = 'signup' | 'claim';
 type Stage = 'idle' | 'processing' | 'locked' | 'verified';
 
+// Generate dynamic usernames for winners
+const generateWinnerName = () => {
+    const prefixes = ['Lucky', 'Dragon', 'Kirin', 'Slot', 'Ocean', 'Vegas', 'Gaming', 'Pro', 'Master', 'King'];
+    const suffixes = ['Slayer', 'Hunter', 'Master', 'King', 'Queen', 'Champ', 'Star', 'Ace', 'Boss', 'Legend'];
+    const numbers = Math.floor(Math.random() * 999) + 1;
+    return `${prefixes[Math.floor(Math.random() * prefixes.length)]}${suffixes[Math.floor(Math.random() * suffixes.length)]}_${numbers}`;
+};
+
 const FAKE_ACTIVITIES = [
-    { user: 'DragonSlayer99', action: 'Claimed', prize: '5,000 COINS', color: 'text-yellow-400' },
-    { user: 'LuckyFish_88', action: 'Just Won', prize: 'MINI JACKPOT', color: 'text-red-400' },
-    { user: 'KirinMaster', action: 'Verified', prize: 'INSTANT ACCESS', color: 'text-green-400' },
-    { user: 'SlotKing', action: 'Withdrew', prize: '$450.00 CASH', color: 'text-green-400' },
-    { user: 'SarahJ_22', action: 'Claimed', prize: 'WELCOME BONUS', color: 'text-yellow-400' },
-    { user: 'OceanHunter', action: 'Hit', prize: 'x500 MULTIPLIER', color: 'text-purple-400' },
-    { user: 'VegasBaby', action: 'Won', prize: '12,500 COINS', color: 'text-yellow-400' },
-    { user: 'CryptoWhale', action: 'Withdrew', prize: '2.5 ETH', color: 'text-blue-400' },
+    { user: generateWinnerName(), action: 'Claimed', prize: '5,000 COINS', color: 'text-yellow-400' },
+    { user: generateWinnerName(), action: 'Just Won', prize: 'MINI JACKPOT', color: 'text-red-400' },
+    { user: generateWinnerName(), action: 'Verified', prize: 'INSTANT ACCESS', color: 'text-green-400' },
+    { user: generateWinnerName(), action: 'Withdrew', prize: '$450.00 CASH', color: 'text-green-400' },
+    { user: generateWinnerName(), action: 'Claimed', prize: 'WELCOME BONUS', color: 'text-yellow-400' },
+    { user: generateWinnerName(), action: 'Hit', prize: 'x500 MULTIPLIER', color: 'text-purple-400' },
+    { user: generateWinnerName(), action: 'Won', prize: '12,500 COINS', color: 'text-yellow-400' },
+    { user: generateWinnerName(), action: 'Withdrew', prize: '$250.00 CASH', color: 'text-green-400' },
 ];
 
 const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
-  const [authMode, setAuthMode] = useState<AuthMode>('signup'); 
+  const [authMode, setAuthMode] = useState<AuthMode>('signup');
   const [username, setUsername] = useState('');
   const [region, setRegion] = useState('NA_EAST');
   
@@ -57,7 +65,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
     const activityTimer = setInterval(() => {
         setShowTicker(false);
         setTimeout(() => {
-            const next = FAKE_ACTIVITIES[Math.floor(Math.random() * FAKE_ACTIVITIES.length)];
+            // 30% chance to show current user winning
+            // Use saved username from localStorage for winning feature, or current input if typing
+            const savedUsername = localStorage.getItem('gamevault_username') || username;
+            let next;
+            if (Math.random() < 0.3 && savedUsername) {
+                const prizes = [
+                    { prize: '2,500 COINS', color: 'text-yellow-400' },
+                    { prize: 'BONUS SPIN', color: 'text-green-400' },
+                    { prize: 'x100 WIN', color: 'text-purple-400' },
+                    { prize: 'LUCKY STRIKE', color: 'text-red-400' }
+                ];
+                const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                next = {
+                    user: savedUsername,
+                    action: 'Just Won',
+                    prize: randomPrize.prize,
+                    color: randomPrize.color
+                };
+            } else {
+                next = FAKE_ACTIVITIES[Math.floor(Math.random() * FAKE_ACTIVITIES.length)];
+            }
             setTopTicker(next);
             setShowTicker(true);
             
@@ -259,7 +287,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                 <ShieldAlert className="w-3 h-3 md:w-4 md:h-4 text-red-400" />
                 <span className="text-red-100 text-[10px] md:text-xs font-bold tracking-widest uppercase">High Traffic: Server Capacity 99%</span>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-kirin-gold text-xs font-mono">
+            <div className="flex items-center gap-2 text-kirin-gold text-xs font-mono">
                 <Users className="w-3 h-3" />
                 <span>{slotsLeft} SLOTS REMAINING</span>
             </div>
@@ -293,9 +321,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                 {/* Bonus Badge - Dynamic */}
                 {stage === 'idle' && (
                     <div className="inline-flex items-center gap-3 bg-gradient-to-r from-slate-900 to-slate-800 border border-kirin-gold/50 rounded-full px-4 py-2 md:px-6 shadow-[0_0_20px_rgba(255,215,0,0.2)] max-w-full transition-all duration-500">
-                        <div className="relative">
+                        <div className="flex items-center gap-2">
+                            <Zap className="w-3 h-3 text-white animate-pulse shrink-0" />
                             <Coins className="w-6 h-6 text-yellow-400 animate-bounce shrink-0" />
-                            <Zap className="w-3 h-3 text-white absolute -top-1 -right-1 animate-pulse" />
                         </div>
                         <div className="text-left leading-tight">
                             <div className="text-[10px] text-gray-400 font-bold uppercase flex items-center gap-1">
