@@ -1,4 +1,4 @@
-// Mock Service - No API Key needed for simulator mode
+// Mock Service - No API Key needed for demo mode
 
 export const generatePitBossResponse = async (
   history: { role: string; text: string }[],
@@ -19,13 +19,13 @@ export const generatePitBossResponse = async (
   if (lowerInput.includes('jackpot')) return "The Grand Jackpot is getting heavy! Someone's gonna drop it soon.";
   if (lowerInput.includes('lose') || lowerInput.includes('lost')) return "Bad luck passes, skill remains. Shake it off!";
   if (lowerInput.includes('win') || lowerInput.includes('won')) return "That's what I'm talking about! 🚀";
-  if (lowerInput.includes('news')) return "I heard the Crypto Whales are migrating today. Might be a sign.";
-  if (lowerInput.includes('help')) return "Just tap the buttons and pray to the Kirin. It's easy!";
+  if (lowerInput.includes('news')) return "I heard the big players are making moves today. Might be a sign.";
+  if (lowerInput.includes('help')) return "Just tap the buttons and trust your luck. It's easy!";
 
   const randomResponses = [
       "The energy in here is electric tonight! ⚡",
       `Looking at that balance... ${currentBalance.toLocaleString()} coins is a solid war chest.`,
-      "Trust your gut. The Fire Kirin watches.",
+      "Trust your gut. The Game Vault watches.",
       "Spin it to win it!",
       "I've got a good feeling about this next round.",
       "Remember: Scared money makes no money! 💸",

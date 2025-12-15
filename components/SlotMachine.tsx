@@ -220,7 +220,7 @@ const SlotMachine: React.FC<SlotMachineProps> = ({ balance, setBalance, jackpot,
             <div className="relative overflow-hidden bg-gradient-to-b from-red-900 via-red-700 to-red-900 p-3 rounded-xl border-4 border-yellow-400 mb-6 w-full text-center shadow-[0_0_20px_rgba(255,69,0,0.6)]">
                 {/* Shine effect */}
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]"></div>
-                <div className="text-yellow-300 font-bold text-[10px] tracking-[0.3em] mb-1 uppercase animate-pulse">Fire Kirin Grand</div>
+                <div className="text-yellow-300 font-bold text-[10px] tracking-[0.3em] mb-1 uppercase animate-pulse">Game Vault Grand</div>
                 <div className="text-4xl font-black text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] font-mono tracking-tighter">
                     ${jackpot.toLocaleString()}
                 </div>

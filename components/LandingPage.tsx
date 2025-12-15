@@ -316,7 +316,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                  <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-kirin-gold to-orange-500 arcade-font drop-shadow-[0_2px_4px_rgba(255,69,0,0.5)] mb-2">
                     Game Vault 777
                 </h1>
-                <p className="text-blue-300 font-bold tracking-widest text-[10px] md:text-sm uppercase mb-4">Official Web Simulator</p>
+                <p className="text-blue-300 font-bold tracking-widest text-[10px] md:text-sm uppercase mb-4">Premium Gaming Experience</p>
                 
                 {/* Bonus Badge - Dynamic */}
                 {stage === 'idle' && (
@@ -538,7 +538,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                     <span className="text-[10px] md:text-xs text-gray-300 font-mono font-bold tracking-wider">{playersOnline.toLocaleString()} PLAYERS ONLINE</span>
                  </div>
                  <p className="text-[10px] text-gray-600">
-                    By accessing Fire Kirin, you agree to the virtual terms of service. 
+                    By accessing Game Vault 777, you agree to the virtual terms of service. 
                     <br/>Anti-cheat protocols are enforced globally.
                  </p>
             </div>
