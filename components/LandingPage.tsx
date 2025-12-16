@@ -359,10 +359,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
         </div>
         
         {/* Urgency Header */}
-        <div className="fixed top-0 left-0 right-0 w-full bg-red-600/20 border-b border-red-500/50 backdrop-blur-sm p-2 flex flex-wrap justify-center items-center gap-2 z-50">
+        <div className="fixed top-0 left-0 right-0 w-full bg-slate-800/40 border-b border-slate-600/50 backdrop-blur-sm p-2 flex flex-wrap justify-center items-center gap-2 z-50">
             <div className="flex items-center gap-2 animate-pulse">
-                <ShieldAlert className="w-3 h-3 md:w-4 md:h-4 text-red-400" />
-                <span className="text-red-100 text-[10px] md:text-xs font-bold tracking-widest uppercase">High Traffic: Server Capacity 99%</span>
+                <Zap className="w-3 h-3 md:w-4 md:h-4 text-kirin-gold" />
+                <span className="text-white text-[10px] md:text-xs font-bold tracking-widest uppercase">CLAIM YOUR SPOT NOW</span>
             </div>
             <div className="flex items-center gap-2 text-kirin-gold text-xs font-mono">
                 <Users className="w-3 h-3" />
